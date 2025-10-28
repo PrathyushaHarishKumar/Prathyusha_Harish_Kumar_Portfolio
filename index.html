@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prathyusha H. Kumar | Data Science & ML Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for a modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Fira+Code:wght@300..700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark GitHub-like background */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .section-padding {
+            padding: 8rem 0;
+        }
+        /* Custom scrollbar to match the dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+
+        /* --- Custom Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animated {
+            animation: fadeInUp 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        @keyframes blink {
+            0%, 100% { border-right-color: transparent; }
+            50% { border-right-color: #2dd4bf; /* teal-400 equivalent */ }
+        }
+        .typing-cursor {
+            border-right: 2px solid #2dd4bf;
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+        }
+        @keyframes cardRevealReference {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* The final class the JS adds to trigger the animation */
+        .experience-card-animated {
+            animation: cardRevealReference 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0; /* Ensures it starts invisible */
+            transform: translateY(20px); /* Ensures it starts below final position */
+        }
+    </style>
+</head>
+<body class="bg-[#0d1117] text-gray-100 antialiased">
+
+    <nav class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-lg border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#hero" class="text-xl font-bold text-teal-400 code-font">&lt;Prathyusha /&gt;</a>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#about" class="hover:text-teal-400 transition duration-300">ABOUT</a>
+                    <a href="#experience" class="hover:text-teal-400 transition duration-300">EXPERIENCE</a>
+                    <a href="#skills" class="hover:text-teal-400 transition duration-300">SKILLS</a>
+                    <a href="#projects" class="hover:text-teal-400 transition duration-300">PROJECTS</a>
+                    <a href="#education" class="hover:text-teal-400 transition duration-300">EDUCATION</a>
+                    <a href="#contact" class="hover:text-teal-400 transition duration-300">CONTACT</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-button" class="text-gray-400 hover:text-teal-400 focus:outline-none">
+                        <!-- Hamburger Icon -->
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-[#0d1117] border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#about" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">ABOUT</a>
+                <a href="#experience" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">EXPERIENCE</a>
+                <a href="#skills" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">SKILLS</a>
+                <a href="#projects" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">PROJECTS</a>
+                <a href="#education" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">EDUCATION</a>
+                <a href="#contact" class="block py-2 text-center text-gray-300 hover:bg-gray-800 w-full rounded-md">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section id="hero" class="section-padding min-h-screen flex items-center">
+            <div class="lg:w-3/4">
+                <p class="text-teal-400 code-font text-lg mb-4">Hello World! I am</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4">
+                    PRATHYUSHA HARISH KUMAR
+                </h1>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-400 mb-8">
+                    <span id="typing-subtitle" class="typing-cursor"></span>
+                </h2>
+                <!-- JSON Code Block -->
+                <div class="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700 code-font text-sm sm:text-base overflow-x-auto">
+                    <pre class="whitespace-pre-wrap"><span class="text-pink-400">const</span> <span class="text-yellow-300">dataScientist</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">role</span>: <span class="text-green-400">'Master\'s Student & Software Developer'</span>,
+    <span class="text-teal-400">expertise</span>: <span class="text-purple-400">[</span>'ML', 'Data Science', 'SQL', 'Python', 'Scalable Systems'<span class="text-purple-400">]</span>,
+    <span class="text-teal-400">mission</span>: <span class="text-green-400">'Build data pipelines and intelligent systems for measurable impact'</span>,
+    <span class="text-teal-400">available</span>: <span class="text-blue-400">true</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding border-t border-gray-800 animate-on-scroll">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">ABOUT ME</h3>
+            <div class="lg:flex lg:space-x-12 items-start">
+                <div class="lg:w-2/3 lg:max-w-3xl">
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I am a **Master's student in Information Systems** with a strong foundation in both software development and the advanced principles of Machine Learning and Data Science. My academic and professional journey has been focused on designing and implementing scalable, intelligent systems.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I specialize in navigating the **full data lifecycle**—from building robust data pipelines and cloud-based solutions using tools like Spark, Airflow, and GCP/AWS, to developing and deploying predictive models with high accuracy. My experience spans from optimizing back-end systems at **IBM** to applying ML to address non-clinical drivers in healthcare research.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Whether it's streamlining credentialing workflows at UMBC or developing a **92% accurate Lung Cancer Prediction** system, I thrive on turning complex data challenges into actionable, measurable outcomes.
+                    </p>
+                </div>
+                <!-- Profile Image & Contact Snippet -->
+                <div class="lg:w-1/3 mt-10 lg:mt-0 flex flex-col items-center">
+                    <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-teal-400 mb-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <!-- Used the uploaded image and added an onerror fallback -->
+                        <img src="Prathy.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x600/115e59/ffffff?text=P+K';" alt="Prathyusha H. Kumar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 code-font text-sm w-full max-w-xs">
+                        <pre class="whitespace-pre-wrap">
+<span class="text-pink-400">const</span> <span class="text-yellow-300">contactDetails</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">location</span>: <span class="text-green-400">'Elkridge, MD 21075'</span>,
+    <span class="text-teal-400">email</span>: <span class="text-green-400">'pharish1@umbc.edu'</span>,
+    <span class="text-teal-400">linkedin</span>: <span class="text-green-400">'/in/prathyusha-h-kumar-843127185/'</span>,
+    <span class="text-teal-400">phone</span>: <span class="text-green-400">'+1 667-274-4882'</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section-padding border-t border-gray-800">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">PROFESSIONAL EXPERIENCE</h3>
+
+            <div class="space-y-16">
+                <!-- Experience Card 1 -->
+                <div class="bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-700 shadow-xl experience-card-item">
+                    <p class="text-xs font-semibold uppercase text-gray-500 mb-2 code-font">May 2025 - Present</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Research Intern | Health Data Lab | UMBC</h4>
+                    <p class="text-teal-400 code-font mb-4">NIH-Funded Project</p>
+
+                    <div class="bg-gray-900 p-4 rounded-lg code-font text-sm overflow-x-auto">
+                        <pre class="whitespace-pre-wrap"><span class="text-pink-400">const</span> <span class="text-yellow-300">job</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">project</span>: <span class="text-green-400">'NIH-funded ML application'</span>,
+    <span class="text-teal-400">focus</span>: <span class="text-green-400">'Non-clinical drivers of emergency department usage'</span>,
+    <span class="text-teal-400">contribution</span>: <span class="text-green-400">'Applied Machine Learning to multi-level health and social data to develop predictive insights for addressing non-clinical factors in emergency room usage.'</span>,
+    <span class="text-teal-400">tools</span>: <span class="text-purple-400">[</span>'ML', 'Predictive Modeling', 'Health Data Integration'<span class="text-purple-400">]</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                    </div>
+                </div>
+
+                <!-- Experience Card 2 -->
+                <div class="bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-700 shadow-xl experience-card-item">
+                    <p class="text-xs font-semibold uppercase text-gray-500 mb-2 code-font">May 2025 - Present</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Graduate Student Worker | Digital Credentialing | UMBC</h4>
+
+                    <div class="bg-gray-900 p-4 rounded-lg code-font text-sm overflow-x-auto">
+                        <pre class="whitespace-pre-wrap"><span class="text-pink-400">const</span> <span class="text-yellow-300">job</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">focus</span>: <span class="text-green-400">'Data-Driven Credential Efficiency'</span>,
+    <span class="text-teal-400">achievements</span>: <span class="text-green-400">'Managed structured metadata models (JSON) and analyzed platform data to streamline workflows. Created data-driven dashboards using Excel and Canvas analytics tracking digital engagement and badge completion, providing actionable insights.'</span>,
+    <span class="text-teal-400">tools</span>: <span class="text-purple-400">[</span>'JSON', 'Excel', 'Canvas Analytics', 'Data Dashboards'<span class="text-purple-400">]</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                    </div>
+                </div>
+                
+                <!-- Experience Card 3 -->
+                <div class="bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-700 shadow-xl experience-card-item">
+                    <p class="text-xs font-semibold uppercase text-gray-500 mb-2 code-font">July 2023 - July 2024</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Software Developer | IBM</h4>
+                    <p class="text-teal-400 code-font mb-4">Agile EConfig Team</p>
+
+                    <div class="bg-gray-900 p-4 rounded-lg code-font text-sm overflow-x-auto">
+                        <pre class="whitespace-pre-wrap"><span class="text-pink-400">const</span> <span class="text-yellow-300">job</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">role</span>: <span class="text-green-400">'Software Developer (1 Year)'</span>,
+    <span class="text-teal-400">core_work</span>: <span class="text-green-400">'Designed, developed, and maintained robust back-end systems in an agile team, integrating with client-server architectures and front-end frameworks.'</span>,
+    <span class="text-teal-400">impact</span>: <span class="text-green-400">'Led the development and optimization of configuration databases, implementing secure designs and delivering scalable solutions.'</span>,
+    <span class="text-teal-400">tools</span>: <span class="text-purple-400">[</span>'Back-end Systems', 'Client-Server Architecture', 'Configuration Databases', 'Secure Design'<span class="text-purple-400">]</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                    </div>
+                </div>
+                
+                <!-- Experience Card 4 -->
+                <div class="bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-700 shadow-xl experience-card-item">
+                    <p class="text-xs font-semibold uppercase text-gray-500 mb-2 code-font">Aug 2022 - Sept 2023</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Embedded C & IOT Intern | APSIS SOLUTION</h4>
+
+                    <div class="bg-gray-900 p-4 rounded-lg code-font text-sm overflow-x-auto">
+                        <pre class="whitespace-pre-wrap"><span class="text-pink-400">const</span> <span class="text-yellow-300">job</span> <span class="text-white">=</span> <span class="text-yellow-300">{</span>
+    <span class="text-teal-400">project</span>: <span class="text-green-400">'IoT-based Automatic Pet Feeder'</span>,
+    <span class="text-teal-400">skills</span>: <span class="text-green-400">'Developed the system using Embedded C and Python, focusing on data communication and hardware-software integration.'</span>,
+    <span class="text-teal-400">features</span>: <span class="text-green-400">'Integrated sensor data with timed automation and mobile app control.'</span>,
+    <span class="text-teal-400">tools</span>: <span class="text-purple-400">[</span>'Embedded C', 'Python', 'IOT', 'Sensor Data'<span class="text-purple-400">]</span>,
+<span class="text-yellow-300">}</span>;</pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="skills" class="section-padding border-t border-gray-800 animate-on-scroll">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">SKILLS & TECHNOLOGIES</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-semibold mb-4 text-pink-400 code-font">Programming & Core</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">R</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Scala</span>
+                        <span class="skill-pill">PLSQL</span>
+                        <span class="skill-pill">Embedded C</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-semibold mb-4 text-pink-400 code-font">Data Science & ML</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill">TensorFlow</span>
+                        <span class="skill-pill">Scikit-learn</span>
+                        <span class="skill-pill">NLP</span>
+                        <span class="skill-pill">Predictive Modeling</span>
+                        <span class="skill-pill">Model Deployment</span>
+                        <span class="skill-pill">Data Warehousing</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-semibold mb-4 text-pink-400 code-font">Big Data & Cloud</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill">Hadoop</span>
+                        <span class="skill-pill">Spark</span>
+                        <span class="skill-pill">Airflow</span>
+                        <span class="skill-pill">Kafka</span>
+                        <span class="skill-pill">GCP (BigQuery, Dataflow)</span>
+                        <span class="skill-pill">AWS (S3, Redshift, EC2)</span>
+                        <span class="skill-pill">HBase</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-semibold mb-4 text-pink-400 code-font">Software/Backend & DevOps</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill">Flask</span>
+                        <span class="skill-pill">RESTful APIs</span>
+                        <span class="skill-pill">Client-Server Arch.</span>
+                        <span class="skill-pill">Git, Jenkins, Jira</span>
+                        <span class="skill-pill">SQLAlchemy</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-semibold mb-4 text-pink-400 code-font">Databases & Visualization</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill">Oracle, MySQL</span>
+                        <span class="skill-pill">MongoDB</span>
+                        <span class="skill-pill">Tableau</span>
+                        <span class="skill-pill">Power BI</span>
+                        <span class="skill-pill">Advanced Excel</span>
+                    </div>
+                </div>
+
+            </div>
+            <script>
+                // This block is used to apply Tailwind classes to the skill pills defined above
+                document.querySelectorAll('.skill-pill').forEach(pill => {
+                    pill.classList.add('px-3', 'py-1', 'bg-teal-900/50', 'text-teal-300', 'text-xs', 'font-medium', 'rounded-full', 'code-font', 'shadow-md', 'hover:bg-teal-800/70', 'transition');
+                });
+            </script>
+        </section>
+
+        <section id="projects" class="section-padding border-t border-gray-800 animate-on-scroll">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">SIGNIFICANT PROJECTS</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl flex flex-col">
+                    <h4 class="text-2xl font-bold text-gray-100 mb-2">Lung Cancer Prediction System</h4>
+                    <p class="text-sm text-gray-400 mb-4 code-font">// Machine Learning for Early-Stage Detection</p>
+                    <p class="text-gray-300 mb-4 flex-grow">
+                        Developed a machine learning system in Python (**scikit-learn**) to predict lung cancer based on patient risk factors. Achieved a high accuracy of **92%** in early-stage detection, demonstrating strong predictive modeling capabilities.
+                    </p>
+                    <div class="bg-gray-900 p-3 rounded-lg code-font text-xs text-yellow-300">
+                        <span class="text-teal-400">tools</span>: ['Python', 'scikit-learn', 'Predictive Modeling', 'Decision Support']
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl flex flex-col">
+                    <h4 class="text-2xl font-bold text-gray-100 mb-2">Oncology of the Future Database</h4>
+                    <p class="text-sm text-gray-400 mb-4 code-font">// Relational Database Design & Querying</p>
+                    <p class="text-gray-300 mb-4 flex-grow">
+                        Designed and implemented a relational database using **MySQL** to store and manage complex cancer marker data. Executed advanced SQL queries and analysis to effectively identify and track disease progression patterns for research insights.
+                    </p>
+                    <div class="bg-gray-900 p-3 rounded-lg code-font text-xs text-yellow-300">
+                        <span class="text-teal-400">tools</span>: ['MySQL', 'Complex SQL Queries', 'Database Design', 'Data Warehousing']
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl flex flex-col">
+                    <h4 class="text-2xl font-bold text-gray-100 mb-2">Personalised Medical Recommendation System (Web App)</h4>
+                    <p class="text-sm text-gray-400 mb-4 code-font">// Full-Stack Web App Development (Flask)</p>
+                    <p class="text-gray-300 mb-4 flex-grow">
+                        Created a **Flask-based web application in Python**. Managed backend workflows and integrated health data inputs using Flask, **SQLAlchemy**, and **RESTful APIs** to enhance the accuracy and user experience of personalized medical recommendations.
+                    </p>
+                    <div class="bg-gray-900 p-3 rounded-lg code-font text-xs text-yellow-300">
+                        <span class="text-teal-400">tools</span>: ['Python', 'Flask', 'SQLAlchemy', 'RESTful APIs', 'Backend Development']
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl flex flex-col">
+                    <h4 class="text-2xl font-bold text-gray-100 mb-2">Smart Indoor Farming Optimization</h4>
+                    <p class="text-sm text-gray-400 mb-4 code-font">// Deep Learning for Optimal Growth (IOT)</p>
+                    <p class="text-gray-300 mb-4 flex-grow">
+                        Developed a machine learning model using Python and **TensorFlow** to analyze sensor data from a farming environment. The model predicts optimal conditions for plant growth, showcasing expertise in applying deep learning to **IoT** data.
+                    </p>
+                    <div class="bg-gray-900 p-3 rounded-lg code-font text-xs text-yellow-300">
+                        <span class="text-teal-400">tools</span>: ['Python', 'TensorFlow', 'Sensor Data Analysis', 'Deep Learning', 'IOT']
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="education" class="section-padding border-t border-gray-800 animate-on-scroll">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">EDUCATION & CERTIFICATIONS</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl">
+                    <p class="text-sm font-semibold uppercase text-gray-500 mb-2 code-font">Sept 2024 - May 2026 (Expected)</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Master's in Information Systems</h4>
+                    <p class="text-teal-400 mb-4">University of Maryland Baltimore County | Maryland, USA</p>
+                    <p class="text-lg font-bold text-yellow-300 code-font">GPA: 3.8/4.0</p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-xl">
+                    <p class="text-sm font-semibold uppercase text-gray-500 mb-2 code-font">Aug 2019 - May 2023</p>
+                    <h4 class="text-2xl font-bold text-gray-100 mb-1">Bachelors in Electronics and Communication Engineering</h4>
+                    <p class="text-teal-400 mb-4">RRCE, Visvesvaraya Technological University | INDIA</p>
+                    <p class="text-lg font-bold text-yellow-300 code-font">GPA: 3.8/4.0</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 p-8 bg-gray-900 rounded-xl border border-gray-700">
+                <h4 class="text-2xl font-bold mb-4 text-pink-400 code-font">Certifications & Training</h4>
+                <div class="flex flex-wrap gap-4 text-gray-300">
+                    <span class="flex items-center"><span class="text-teal-400 mr-2">&bull;</span> Google AI Essentials</span>
+                    <span class="flex items-center"><span class="text-teal-400 mr-2">&bull;</span> The Fundamentals of Digital Marketing, Google</span>
+                    <span class="flex items-center"><span class="text-teal-400 mr-2">&bull;</span> R and LaTeX for data analytics, UTP, Malaysia</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding border-t border-gray-800 animate-on-scroll">
+            <h3 class="text-4xl font-bold mb-12 text-center text-teal-400">CONTACT & CONNECT</h3>
+
+            <div class="max-w-xl mx-auto text-center">
+                <p class="text-gray-300 text-lg mb-8">
+                    I am actively seeking opportunities in **Data Science, Machine Learning Engineering, or Software Development**. Feel free to reach out for collaboration or just to chat about data and intelligent systems!
+                </p>
+
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="mailto:pharish1@umbc.edu" class="inline-flex items-center px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-lg hover:bg-teal-500 transition duration-300">
+                        <!-- Email Icon -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-1 12H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2z"></path></svg>
+                        Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/prathyusha-h-kumar-843127185/" target="_blank" class="inline-flex items-center px-8 py-3 bg-gray-700 text-gray-200 font-semibold rounded-lg shadow-lg hover:bg-gray-600 transition duration-300">
+                        <!-- LinkedIn Icon -->
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.380 1.11-2.5 2.48-2.5s2.48 1.120 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.98 0h-7.98v16h7.98v-8.399c0-4.67 6.16-4.59 6.16 0v8.399h5.04v-10.13c0-7.88-8.52-7.85-10.42-3.83z"/></svg>
+                        LinkedIn Profile
+                    </a>
+                </div>
+                <p class="mt-6 text-gray-500 text-sm code-font">Elkridge, MD 21075 | +1 667-274-4882</p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#0d1117] border-t border-gray-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm code-font">
+            &copy; <span id="current-year"></span> Prathyusha Harish Kumar Portfolio | Built with Tailwind CSS
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle logic
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+
+        // --- ANIMATION LOGIC ---
+
+        // 1. Typing Effect Logic for Hero Subtitle
+        const subtitleElement = document.getElementById('typing-subtitle');
+        const textToType = 'I build data pipelines and intelligent systems.';
+        let i = 0;
+
+        function typingEffect() {
+            if (i < textToType.length) {
+                subtitleElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typingEffect, 50); // Speed of typing (50ms per character)
+            } else {
+                // Stop blinking cursor after typing is complete
+                subtitleElement.classList.remove('typing-cursor');
+            }
+        }
+
+        // 2. Intersection Observer for Fade-In on Scroll for GENERAL sections
+        const generalObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const generalObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, generalObserverOptions);
+
+        // Target all major sections marked for animation
+        document.querySelectorAll('.animate-on-scroll').forEach(section => {
+            generalObserver.observe(section);
+        });
+
+
+        // 3. Intersection Observer for Experience Cards (staggered reveal)
+        const experienceObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the card is visible
+        };
+
+        const experienceObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Stagger the animation using a data attribute
+                    const delay = parseInt(entry.target.dataset.animationDelay || '0');
+                    setTimeout(() => {
+                        entry.target.classList.add('experience-card-animated');
+                    }, delay);
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, experienceObserverOptions);
+
+        // Apply delays and observe experience cards
+        document.querySelectorAll('.experience-card-item').forEach((card, index) => {
+            // Apply a stagger delay of 150ms between cards
+            card.setAttribute('data-animation-delay', index * 150); 
+            experienceObserver.observe(card);
+        });
+
+
+        // Initialize typing effect when the page loads
+        window.onload = function() {
+            typingEffect();
+        };
+
+    </script>
+</body>
+</html>
